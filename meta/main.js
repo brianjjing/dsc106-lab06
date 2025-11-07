@@ -42,7 +42,46 @@ function processCommits(data) {
     });
 }
   
+function renderCommitInfo(data, commits) {
+    // Create the dl element
+    const dl = d3.select('#stats').append('dl').attr('class', 'stats');
+  
+    // Add total LOC
+    dl.append('dt').html('Total <abbr title="Lines of code">LOC</abbr>');
+    dl.append('dd').text(data.length);
+  
+    // Add total commits
+    dl.append('dt').text('Total commits');
+    dl.append('dd').text(commits.length);
+  
+    //1. Average Commit Length:
+    const numberOfFiles = d3.group(data, d => d.file).size;
+    dl.append('dt').text('Number of files');
+    dl.append('dd').text(numberOfFiles.toFixed(2));
+
+    //2. Average file length:
+    const fileLengths = d3.rollups(
+        data,
+        (v) => d3.max(v, (v) => v.line),
+        (d) => d.file,
+    );
+    const averageFileLength = d3.mean(fileLengths, (d) => d[1]);
+    dl.append('dt').text('Average line length');
+    dl.append('dd').text(averageFileLength.toFixed(2));
+
+    //3. Longest file:
+    const averageLineLength = d3.mean(data, d => d.length)
+    dl.append('dt').text('Average line length');
+    dl.append('dd').text(averageLineLength.toFixed(2));
+
+    //4. Longest line:
+    const longestLineLength = d3.max(data, d => d.length)
+    dl.append('dt').text('Longest line length');
+    dl.append('dd').text(longestLineLength.toFixed(2));
+  }
 
 let data = await loadData();
 let commits = processCommits(data); //info abt each commit
 console.log(commits)
+
+renderCommitInfo(data, commits);

@@ -5,7 +5,7 @@ const projects = await fetchJSON('../lib/projects.json');
 const projectsContainer = document.querySelector('.projects');
 
 let selectedIndex = -1; 
-let activeQuery = ''; 
+let activeQuery = '';
 let currentPieData = []; 
 
 function filterAndRender() {

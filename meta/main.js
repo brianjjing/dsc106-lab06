@@ -1,4 +1,5 @@
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
+import '../global.js';
 
 async function loadData() {
     const data = await d3.csv('loc.csv', (row) => ({

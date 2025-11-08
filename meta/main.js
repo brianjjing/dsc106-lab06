@@ -159,6 +159,7 @@ let data = await loadData();
 let commits = processCommits(data); //info abt each commit
 console.log(commits)
 renderCommitInfo(data, commits);
+renderScatterPlot(data, commits);
 
 function renderTooltipContent(commit) {
     const link = document.getElementById('commit-link');

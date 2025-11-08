@@ -296,3 +296,36 @@ circle:hover {
 circle.selected {
   fill: #ff6b6b;
 }
+
+/* Stats class: */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 2rem 0;
+  text-align: center;
+  font-family: system-ui, sans-serif;
+}
+.stats dt {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+.stats dd {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+}
+.stats dt,
+.stats dd {
+  display: block;
+}
+.stats > * {
+  flex: 1;
+  min-width: 100px;
+}

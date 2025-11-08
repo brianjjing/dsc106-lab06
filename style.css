@@ -217,3 +217,14 @@ svg {
   grid-row: 2;
   margin: 0;
 }
+
+/* Meta: */
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}

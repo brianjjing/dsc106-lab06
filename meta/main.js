@@ -213,24 +213,12 @@ function createBrushSelector(svg) {
 }  
 
 function brushed(event) {
-    console.log(event);
-}
-
-function brushed(event) {
     const selection = event.selection;
     d3.selectAll('circle').classed('selected', (d) =>
       isCommitSelected(selection, d),
     );
     renderSelectionCount(selection);
     renderLanguageBreakdown(selection);
-}
-  
-function isCommitSelected(selection, commit) {
-    if (!selection) {
-        return false;
-    }
-    // TODO: return true if commit is within brushSelection
-    // and false if not
 }
 
 function isCommitSelected(commit) {

@@ -109,8 +109,9 @@ function renderScatterPlot(data, commits) {
         .attr('r', 5)
         .attr('fill', 'steelblue')
         .on('mouseenter', (event, commit) => {
-        renderTooltipContent(commit);
+            renderTooltipContent(commit);
             updateTooltipVisibility(true);
+            updateTooltipPosition(event);
         })
         .on('mouseleave', () => {
             updateTooltipVisibility(false);
@@ -160,7 +161,6 @@ function renderScatterPlot(data, commits) {
 let data = await loadData();
 let commits = processCommits(data); //info abt each commit
 console.log(commits)
-renderCommitInfo(data, commits);
 renderScatterPlot(data, commits);
 
 function renderTooltipContent(commit) {
@@ -190,3 +190,9 @@ function updateTooltipVisibility(isVisible) {
     const tooltip = document.getElementById('commit-tooltip');
     tooltip.hidden = !isVisible;
 }
+
+function updateTooltipPosition(event) {
+    const tooltip = document.getElementById('commit-tooltip');
+    tooltip.style.left = `${event.clientX}px`;
+    tooltip.style.top = `${event.clientY}px`;
+}  

@@ -307,24 +307,34 @@ circle.selected {
   margin: 2rem 0;
   text-align: center;
   font-family: system-ui, sans-serif;
+  background-color: rgba(20, 20, 20, 0.85);
+  color: #f9fafb;
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
 }
+
 .stats dt {
   font-size: 0.75rem;
   letter-spacing: 0.05em;
-  color: #6b7280;
+  color: #d1d5db;
   text-transform: uppercase;
   margin-bottom: 0.25rem;
 }
+
 .stats dd {
   font-size: 2rem;
   font-weight: 600;
-  color: #000;
+  color: #fff;
   margin: 0;
 }
+
 .stats dt,
 .stats dd {
   display: block;
 }
+
 .stats > * {
   flex: 1;
   min-width: 100px;

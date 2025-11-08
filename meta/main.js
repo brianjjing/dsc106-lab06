@@ -141,14 +141,14 @@ function renderScatterPlot(data, commits) {
     yScale.range([usableArea.bottom, usableArea.top]);
 
     // Create the axes
-    const xAxis = d3.axisBottom(xScale);
+    const xAxis = d3.axisBottom(xScale).tickFormat(d3.timeFormat("%b %e"));
     const yAxis = d3.axisLeft(yScale).tickFormat((d) => String(d % 24).padStart(2, '0') + ':00'); //Gets it in datetime format
 
     // Add X axis
     svg
-    .append('g')
-    .attr('transform', `translate(0, ${usableArea.bottom})`)
-    .call(xAxis);
+        .append('g')
+        .attr('transform', `translate(0, ${usableArea.bottom})`)
+        .call(xAxis);
 
     // Add Y axis
     svg

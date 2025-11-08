@@ -150,9 +150,9 @@ function renderScatterPlot(data, commits) {
 
     // Add Y axis
     svg
-    .append('g')
-    .attr('transform', `translate(${usableArea.left}, 0)`)
-    .call(yAxis);
+        .append('g')
+        .attr('transform', `translate(${usableArea.left}, 0)`)
+        .call(yAxis);
 
     // Add gridlines BEFORE the axes
     const gridlines = svg
@@ -162,6 +162,8 @@ function renderScatterPlot(data, commits) {
 
     // Create gridlines as an axis with no labels and full-width ticks
     gridlines.call(d3.axisLeft(yScale).tickFormat('').tickSize(-usableArea.width));
+
+    createBrushSelector(svg)
 }  
 
 let data = await loadData();
@@ -201,4 +203,9 @@ function updateTooltipPosition(event) {
     const tooltip = document.getElementById('commit-tooltip');
     tooltip.style.left = `${event.clientX}px`;
     tooltip.style.top = `${event.clientY}px`;
+}
+
+function createBrushSelector(svg) {
+    svg.call(d3.brush());
+    svg.selectAll('.dots, .overlay ~ *').raise();
 }  

@@ -215,22 +215,21 @@ function createBrushSelector(svg) {
 function brushed(event) {
     const selection = event.selection;
     d3.selectAll('circle').classed('selected', (d) =>
-      isCommitSelected(selection, d),
+        isCommitSelected(selection, d)
     );
     renderSelectionCount(selection);
     renderLanguageBreakdown(selection);
 }
 
-function isCommitSelected(commit) {
-    if (!selection) { 
-        return false;
-    }
-    const [x0, x1] = selection.map((d) => d[0]);
-    const [y0, y1] = selection.map((d) => d[1]);
+function isCommitSelected(selection, commit) {
+    if (!selection) return false;
+  
+    const [[x0, y0], [x1, y1]] = selection;
     const x = xScale(commit.datetime);
     const y = yScale(commit.hourFrac);
+
     return x >= x0 && x <= x1 && y >= y0 && y <= y1;
-} 
+}
 
 function renderSelectionCount(selection) {
     const selectedCommits = selection

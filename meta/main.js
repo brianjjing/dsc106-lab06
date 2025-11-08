@@ -98,12 +98,14 @@ function renderScatterPlot(data, commits) {
     const yScale = d3.scaleLinear().domain([0, 24]).range([height, 0]);
 
     const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
-    const rScale = d3.scaleLinear().domain([minLines, maxLines]).range([2, 30]);
+    const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([2, 30]);
+
+    const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
 
     const dots = svg.append('g').attr('class', 'dots');
     dots
         .selectAll('circle')
-        .data(commits)
+        .data(sortedCommits)
         .join('circle')
         .attr('cx', (d) => xScale(d.datetime))
         .attr('cy', (d) => yScale(d.hourFrac))

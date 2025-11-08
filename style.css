@@ -261,3 +261,27 @@ circle {
 circle:hover {
   transform: scale(1.5);
 }
+
+/* Tooltip */
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  padding: 0.75em 1em;
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(200, 200, 200, 0.4);
+  pointer-events: none; /* So it doesn’t block mouse events */
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  opacity: 0;
+  transform: translateY(-4px);
+  z-index: 1000;
+}
+
+/* When visible (you’ll toggle this class in JS) */
+.tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

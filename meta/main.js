@@ -106,8 +106,14 @@ function renderScatterPlot(data, commits) {
         .attr('cx', (d) => xScale(d.datetime))
         .attr('cy', (d) => yScale(d.hourFrac))
         .attr('r', 5)
-        .attr('fill', 'steelblue');
-    
+        .attr('fill', 'steelblue')
+        .on('mouseenter', (event, commit) => {
+            renderTooltipContent(commit);
+          })
+          .on('mouseleave', () => {
+            // TODO: Hide the tooltip
+          });
+
     const margin = { top: 10, right: 10, bottom: 30, left: 20 };
 
     const usableArea = {

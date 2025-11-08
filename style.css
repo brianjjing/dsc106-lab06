@@ -292,3 +292,7 @@ circle:hover {
   opacity: 1;
   transform: translateY(0);
 }
+
+circle.selected {
+  fill: #ff6b6b;
+}
